@@ -59,7 +59,7 @@ class TAPTST10Control:
                         self.endpoints.append(ep)
                         self.pipes.append(ep.address)
                     return
-        raise RuntimeError, 'Device not found'
+        raise RuntimeError('Device not found')
 
     def __del__(self):
         if hasattr(self, 'handle'):
@@ -70,7 +70,7 @@ class TAPTST10Control:
 
     def open(self):
         if hasattr(self, 'handle'):
-            raise RuntimeError, 'Device already opened'
+            raise RuntimeError('Device already opened')
         self.handle = self.device.open()
         self.handle.setConfiguration(self.configuration)
         self.handle.claimInterface(self.interface)
@@ -81,7 +81,7 @@ class TAPTST10Control:
             self.handle.releaseInterface()
             del self.handle
         else:
-            raise RuntimeError, 'Device not opened'
+            raise RuntimeError('Device not opened')
 
     def getData(self, msg):
         first = True
@@ -144,11 +144,11 @@ if __name__ == '__main__':
 
     now = datetime.datetime.now()
     count, size, minute, second, watts, kWhs = inst.getData(msg);
-    print "No.,DateTime,Watt,kWh"
+    print("No.,DateTime,Watt,kWh")
     if count > 0:
         watt_unit = datetime.timedelta(minutes=10)
         start_time = now - watt_unit * (count - 1)
         for x in range(count):
             t = start_time.timetuple()
-            print "%d,%d/%02d/%02d %02d:%02d,%.1f,%.2f" % (x + 1, t[0], t[1], t[2], t[3], (t[4] / 10) * 10, watts[x], kWhs[x])
+            print("%d,%d/%02d/%02d %02d:%02d,%.1f,%.2f" % (x + 1, t[0], t[1], t[2], t[3], (t[4] / 10) * 10, watts[x], kWhs[x]))
             start_time = start_time + watt_unit

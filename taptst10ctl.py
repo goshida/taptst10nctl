@@ -83,7 +83,7 @@ watts = []
 kWhs = []
 outep.write('\x02\x18\x0a')
 while True:
-    data = dev.read(ENDPOINT, 17, intf, 1000)
+    data = dev.read(ENDPOINT, 17, 1000)
     # dump raw data
     #print(" ".join("{:02x}".format(x) for x in data))
 
@@ -115,11 +115,11 @@ while True:
     if data[16] == 0xfe or size <= 0:
         break
 
-print "No.,DateTime,Watt,kWh"
+print("No.,DateTime,Watt,kWh")
 if count > 0:
     watt_unit = datetime.timedelta(minutes=10)
     start_time = now - watt_unit * (count - 1)
     for x in range(count):
         t = start_time.timetuple()
-        print "%d,%d/%02d/%02d %02d:%02d,%.1f,%.2f" % (x + 1, t[0], t[1], t[2], t[3], (t[4] / 10) * 10, watts[x], kWhs[x])
+        print("%d,%d/%02d/%02d %02d:%02d,%.1f,%.2f" % (x + 1, t[0], t[1], t[2], t[3], (t[4] / 10) * 10, watts[x], kWhs[x]))
         start_time = start_time + watt_unit
