@@ -1,4 +1,4 @@
-taptst10ctl
-===========
+# taptst10nctl
 
-SANWA SUPPLY TAP-TST10 control tool
+SANWA SUPPLY TAP-TST10N control tool
+

@@ -25,12 +25,10 @@
 #
 
 #
-# SANWA SUPPLY TAP-TST10 control tool
+# SANWA SUPPLY TAP-TST10N control tool
 #
-# require: pyusb, libusb
-# tested on python-2.7.5, pyusb-1.0.0a3, libusb-win32-bin-1.2.6.0
-#
-# My analysis result: http://d.hatena.ne.jp/nonakap/20130716#p2
+# require: pyusb
+# tested on python-3.12.3, pyusb-1.2.1
 #
 
 import usb.core
